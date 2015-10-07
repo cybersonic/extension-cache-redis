@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="clean" basedir="." name="redis-extension">
+	<description>
+        Build Redis Cache Extension
+    </description>
+   
+  <import file="build-compile.xml"/>
+
+  <target name="copyModern" depends="copyBase" description="copy source file to temp" >
+    
+    <echo file="${dist}/extension/META-INF/MANIFEST.MF">Manifest-Version: 1.0
+Built-Date: ${NOW}
+version: "${bundleversion}${build.number}"
+id: "${id}"
+name: "${label}"
+description: "${description}"
+start-bundles: false
+trial: false
+lucee-core-version: 4.5.1.000"
+</echo>
+
+
+  </target>
+  
+
+  <target name="buildModern" depends="copyModern"
+        description="generate the distribution" >
+ 
+    <!-- copy the logo -->
+    <copy todir="${dist}/extension/META-INF">
+      <fileset dir="${build}/images">
+        <include name="logo.png"/>
+      </fileset>
+    </copy>
+
+    <!-- Zip everything  -->
+     <zip destfile="${dist}/modern/redisdb-extension-${bundleversion}${build.number}.lex">
+        <zipfileset dir="${dist}/extension"/>
+    </zip>
+		
+  </target>
+
+</project>
