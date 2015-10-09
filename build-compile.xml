@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project default="clean" basedir="." name="redis-extension">
+<project basedir="." name="redis-extension">
 	<description>
     Build Redis Cache Extension - Compile
   </description>
@@ -67,7 +67,7 @@
 
     <!-- Put everything in ${build} into .jar file -->
     <jar 
-      jarfile="${dist}/extension/jars/redisdb-extension-${bundleversion}${build.number}.jar" basedir="${temp}/classes"  manifest="${src}/META-INF/MANIFEST.MF">
+      jarfile="${dist}/extension/jars/${codename}-extension-${bundleversion}${build.number}.jar" basedir="${temp}/classes"  manifest="${src}/META-INF/MANIFEST.MF">
       <manifest>
         <attribute name="Bundle-Version" value="${bundleversion}${build.number}"/>
         <attribute name="Built-Date" value="${NOW}"/>
@@ -79,11 +79,7 @@
   <target name="copyBase" depends="compile"
         description="compile the source " >
 
-        <!-- copy the fld necessary -->
-    <!-- <loadfile property="content1" srcFile="${fld}/redisdb.fld" />
-    <replace haystack="${content1}" needle="{bundle-name}" repl="${bundlename}" property="content2"/>
-    <replace haystack="${content2}" needle="{bundle-version}" repl="${bundleversion}${build.number}" property="content3"/>
-    <echo message="${content3}" file="${dist}/extension/flds/redisdb.fld"/> -->
+   
 
     <!-- copy the context necessary 
   	
@@ -94,6 +90,13 @@
     </copy>
     
     -->
+  	
+  	<echo>Copying the context drivers </echo>
+  	<copy todir="${dist}/extension/context">
+  	      <fileset dir="${build}/context">
+  	        <include name="**/*.*"/>
+  	      </fileset>
+  	</copy>
 
     <!-- copy the jars necessary -->
     <copy todir="${dist}/extension/jars">

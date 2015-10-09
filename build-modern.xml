@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project default="clean" basedir="." name="redis-extension">
+<project  basedir="." name="redis-extension">
 	<description>
         Build Redis Cache Extension
     </description>
@@ -33,6 +33,14 @@ lucee-core-version: 4.5.1.000"
       </fileset>
     </copy>
 
+  	
+  	<!-- make a backup folder so we can see what we are zipping -->
+    <copy todir="${dist}/extension_raw/">
+        <fileset dir="${dist}/extension">
+          
+        </fileset>
+      </copy>
+  	
     <!-- Zip everything  -->
      <zip destfile="${dist}/modern/redisdb-extension-${bundleversion}${build.number}.lex">
         <zipfileset dir="${dist}/extension"/>

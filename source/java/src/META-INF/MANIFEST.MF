@@ -1,4 +1,3 @@
 Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
 Export-Package: org.lucee.redis
-Require-Bundle: redis.clients.jedis;bundle-version=2.1.0.RELEASE
+Bundle-ManifestVersion: 2
