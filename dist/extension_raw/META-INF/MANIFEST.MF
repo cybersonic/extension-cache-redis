@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Built-Date: 2015-10-09 15:17:40
+version: "1.0.0.20"
+id: "4F8856F5-BBBE-494A-900D62CB8B7B61BE"
+name: "Redis Cache"
+description: "This is the Redis Cache implementation for Lucee. This allows you to cache objects, primitives and queries in a Redis server that can then be used as a cache."
+start-bundles: false
+trial: false
+lucee-core-version: 4.5.1.000"
